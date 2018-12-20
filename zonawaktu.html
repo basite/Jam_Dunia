@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <div>
+        <h1>Jam Dunia</h1>
+        <br><br>
+        <!-- Pake Tabel Supaya tampilannya Rata -->
+        <table id="tabelzona">
+            <tr>
+                <td id="3"></td>
+                <td>GMT+0 London, Inggris</td>
+            </tr>
+            <tr>
+                <td id="4"></td>
+                <td>GMT+1 Paris, Perancis</td>
+            </tr>
+            <tr>
+                <td id="5"></td>
+                <td>GMT+2 Istanbul, Turki</td>
+            </tr>
+            <tr>
+                <td id="6"></td>
+                <td>GMT+3 Moskow, Rusia</td>
+            </tr>
+            <tr>
+                <td id="7"></td>
+                <td>GMT+4 Abu Dhabi, UEA</td>
+            </tr>
+            <tr>
+                <td id="8"></td>
+                <td>GMT+5 Islamabad, Pakistan</td>
+            </tr>
+            <tr>
+                <td id="9"></td>
+                <td>GMT+6 Astana, Kazahstan</td>
+            </tr>
+            <tr>
+                <td id="0"></td>
+                <td>GMT+7 Jakarta, Indonesia</td>
+            </tr>
+            <tr>
+                <td id="1"></td>
+                <td>GMT+8 Beijing, China</td>
+            </tr>
+            <tr>
+                <td id="2"></td>
+                <td>GMT+9 Tokyo, Jepang</td>
+            </tr>
+            
+        </table>
+        <p>Selisih antar zona waktu = 1 jam, 1 menit, 1 detik</p>
+    </div>
+
+    <script>
+        let zonawaktu = () => {
+            document.getElementById("tabelzona").style.visibility = "visible";
+            for(i=0;i<10;i++){
+                let waktu = new Date();
+                // Pake Waktu Lokal Komputer
+                jam = waktu.getHours(waktu.setHours(waktu.getHours()+i));
+                menit = waktu.getMinutes(waktu.setMinutes(waktu.getMinutes()+i));
+                detik = waktu.getSeconds(waktu.setSeconds(waktu.getSeconds()+i));
+                // (Masih ada yang kurang sempurna nih.... hmm..)
+
+                // Kalo Pake Waktu Global
+                // jam = waktu.getUTCHours(waktu.setUTCHours(waktu.getUTCHours()+i));
+                // menit = waktu.getUTCMinutes(waktu.setUTCMinutes(waktu.getUTCMinutes()+i));
+                // detik = waktu.getUTCSeconds(waktu.setUTCSeconds(waktu.getUTCSeconds()+i));
+                
+                if(jam < 10){ 
+                jam = "0" + jam 
+                }
+                if(menit < 10){
+                    menit = "0" + menit
+                }
+                if(detik < 10){
+                    detik = "0" + detik;   
+                }
+                
+                document.getElementById(i).innerHTML = (`<tr><td> ${jam} : ${menit} : ${detik} * </td></tr>`);
+            }
+        }
+        setInterval(zonawaktu,100);
+    </script>
+    </center>
+</body>
+</html>
